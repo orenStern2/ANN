@@ -1,0 +1,25 @@
+@startuml
+class ann.HiddenLayer
+class ann.InputLayer
+class ann.Layer
+class ann.NeuralNet
+class ann.Neuron
+class ann.OutputLayer
+class java.util.ArrayList
+class java.util.Arrays
+class java.util.Random
+ann.HiddenLayer --|> ann.Layer
+ann.HiddenLayer ..> java.util.ArrayList
+ann.HiddenLayer ..> java.util.Arrays
+ann.HiddenLayer ..> java.util.Random
+ann.InputLayer --|> ann.Layer
+ann.InputLayer ..> java.util.ArrayList
+ann.InputLayer ..> java.util.Arrays
+ann.Layer ..> java.util.ArrayList
+ann.NeuralNet ..> java.util.ArrayList
+ann.Neuron ..> java.util.ArrayList
+ann.Neuron ..> java.util.Random
+ann.OutputLayer --|> ann.Layer
+ann.OutputLayer ..> java.util.ArrayList
+ann.OutputLayer ..> java.util.Arrays
+@enduml
