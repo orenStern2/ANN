@@ -45,7 +45,7 @@ public class Backpropagation extends Training {
 		
 	}
 
-	protected NeuralNet forward(NeuralNet n, int row) {
+	public NeuralNet forward(NeuralNet n, int row) {
 		
 		ArrayList<HiddenLayer> listOfHiddenLayer = new ArrayList<HiddenLayer>();
 

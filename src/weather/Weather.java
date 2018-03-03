@@ -76,7 +76,7 @@ try{
     n1Trained.setTrainSet(matrixInputTestRNANorm);
     n1Trained.setRealMatrixOutputSet(matrixOutputTestRNANorm);
     
-    double[][] matrixOutputRNATest = n1Trained.getNetoutputValues(n1Trained);
+    double[][] matrixOutputRNATest = n1Trained.getNetOutputValues(n1Trained);
     double[][] matrixOutputRNADenormTest = new Data().denormalize(matrixOutputTestRNA, matrixOutputRNATest, NORMALIZATION_TYPE);
     
     ArrayList<double[][]> listOfArraysToJoinTest = new ArrayList<double[][]>();
