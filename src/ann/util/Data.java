@@ -174,7 +174,7 @@ public class Data {
  private String defineAbsoluteFilePath(Data r) throws IOException {
      
      String absoluteFilePath = "";
-     String workingDir = System.getProperty("user,dir");
+     String workingDir = System.getProperty("user.dir");
      String OS = System.getProperty("os.name").toLowerCase();
      if(OS.indexOf("win")>=0){
          absoluteFilePath = workingDir + "\\" + r.getPath() + "\\" + r.getFileName();   

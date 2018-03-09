@@ -13,8 +13,8 @@ public class Weather {
 
 public static void main(String args[]){
 
-Data weatherDataInput = new Data("data", "inmet_13_14_input.csv");  
-Data weatherDataOutput = new Data("data", "inmet_13_14_input.csv");
+Data weatherDataInput = new Data("Data", "inmet_13_14_input.csv");  
+Data weatherDataOutput = new Data("Data", "inmet_13_14_input.csv");
 
 Data weatherDataInputTestRNA = new Data("Data", "inmet_13_14_input_test.csv");
 Data weatherDataOutputTestRNA = new Data("Data", "inmet_13_14_input_test.csv");
