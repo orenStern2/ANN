@@ -13,7 +13,7 @@ public abstract class Training {
 	private double mse;
 
 	public enum TrainingTypesENUM {
-		PERCEPTRON, ADALINE, BACKPROPAGATION, LEVENBERG_MARQUARDT, KOHONEN;
+		PERCEPTRON, ADALINE, BACKPROPAGATION, KOHONEN;
 	}
 
 	public NeuralNet train(NeuralNet n) {
@@ -33,8 +33,7 @@ public abstract class Training {
 				double netValue = 0.0;
 
 				for (int j = 0; j < cols; j++) {
-					inputWeightIn = n.getInputLayer().getListOfNeurons().get(j)
-							.getListOfWeightIn();
+					inputWeightIn = n.getInputLayer().getListOfNeurons().get(j).getListOfWeightIn();
 					double inputWeight = inputWeightIn.get(0);
 					netValue = netValue + inputWeight * n.getTrainSet()[i][j];
 				}
@@ -49,7 +48,7 @@ public abstract class Training {
 				if (Math.abs(this.getError()) > n.getTargetError()) {
 					// fix weights
 					InputLayer inputLayer = new InputLayer();
-					inputLayer.setListOfNeurons(this.teachNeuronsOfLayer(cols,i, n, netValue));
+					inputLayer.setListOfNeurons(this.teachNeuronsOfLayer(cols, i, n, netValue));
 					n.setInputLayer(inputLayer);
 				}
 
@@ -85,7 +84,7 @@ public abstract class Training {
 			Neuron neuron = new Neuron();
 			neuron.setListOfWeightIn(inputWeightsInNew);
 			listOfNeurons.add(neuron);
-			inputWeightsInNew = new ArrayList<Double>();
+			inputWeightsInNew = new ArrayList<>();
 		}
 
 		return listOfNeurons;
@@ -101,7 +100,6 @@ public abstract class Training {
 		case ADALINE:
 			return inputWeightOld + n.getLearningRate() * error * trainSample
 					* derivativeActivationFnc(n.getActivationFnc(), netValue);
-                 
 		default:
 			throw new IllegalArgumentException(trainType
 					+ " does not exist in TrainingTypesENUM");
@@ -153,7 +151,7 @@ public abstract class Training {
 		return v;
 	}
 	private double fncSigLog(double v) {
-		return 1.0 / (1.0 + Math.exp(-v));
+		return (1.0 / (1.0 + Math.exp(-v)));
 	}
 	private double fncHyperTan(double v) {
 		return Math.tanh(v);
@@ -163,7 +161,7 @@ public abstract class Training {
 		return 1.0;
 	}
 	private double derivativeFncSigLog(double v) {
-		return v * (1.0 - v);
+		return (v * (1.0 - v));
 	}
 	private double derivativeFncHyperTan(double v) {
 		return (1.0 / Math.pow(Math.cosh(v), 2.0));
@@ -179,22 +177,23 @@ public abstract class Training {
 		for (int i = 0; i < rows; i++) {
 			double netValue = 0.0;
 			for (int j = 0; j < cols; j++) {
-				inputWeightIn = trainedNet.getInputLayer().getListOfNeurons()
-						.get(j).getListOfWeightIn();
+				inputWeightIn = trainedNet.getInputLayer().getListOfNeurons().get(j).getListOfWeightIn();
 				double inputWeight = inputWeightIn.get(0);
-				netValue = netValue + inputWeight
-						* trainedNet.getTrainSet()[i][j];
+				netValue = netValue + inputWeight * trainedNet.getTrainSet()[i][j];
 
 				System.out.print(trainedNet.getTrainSet()[i][j] + "\t");
 			}
 
-			double estimatedOutput = this.activationFnc(trainedNet.getActivationFnc(), netValue);
-                        int colsOutput = trainedNet.getRealMatrixOutputSet()[0].length;
-                        double realOutput = 0.0;
-                        for(int k = 0; k < colsOutput; k++){
-                            realOutput = realOutput + trainedNet.getRealMatrixOutputSet()[i][k];
-                }
-			System.out.print(" NET OUTPUT: " + estimatedOutput + "\t");
+			double estimatedOutput = this.activationFnc( trainedNet.getActivationFnc(), netValue );
+			
+			int colsOutput = trainedNet.getRealMatrixOutputSet()[0].length;
+			
+			double realOutput = 0.0;
+			for (int k = 0; k < colsOutput; k++) {
+				realOutput = realOutput + trainedNet.getRealMatrixOutputSet()[i][k];
+			}
+
+			System.out.print(" NET OUTPUT: "  + estimatedOutput + "\t");
 			System.out.print(" REAL OUTPUT: " + realOutput + "\t");
 			double error = estimatedOutput - realOutput;
 			System.out.print(" ERROR: " + error + "\n");
@@ -228,12 +227,3 @@ public abstract class Training {
 	}
 
 }
-
-
-
-
-
-
-
-
-

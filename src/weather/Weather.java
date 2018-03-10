@@ -72,7 +72,7 @@ public static void main(String args[]){
 			
 			//TEST:
 			n1Trained.setTrainSet( matrixInputTestRNANorm );
-			n1Trained.setRealMatrixOutputSet( matrixOutputTestRNANorm );;
+			n1Trained.setRealMatrixOutputSet( matrixOutputTestRNANorm );
 			
 			double[][] matrixOutputRNATest  	  = n1Trained.getNetOutputValues(n1Trained);
 			double[][] matrixOutputRNADenormTest  = new Data().denormalize(matrixOutputTestRNA, matrixOutputRNATest, NORMALIZATION_TYPE);

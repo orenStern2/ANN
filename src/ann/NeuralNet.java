@@ -20,7 +20,7 @@ public class NeuralNet {
 	private int numberOfHiddenLayers;
 	
 	private double[][] trainSet;
-        private double[][] validationSet;
+	private double[][] validationSet;
 	private double[] realOutputSet;
 	private double[][] realMatrixOutputSet;
 	private int maxEpochs;
@@ -29,11 +29,10 @@ public class NeuralNet {
 	private double trainingError;
 	private double errorMean;
 	
-	private ArrayList<Double> listOfMSE = new ArrayList<Double>();
+	private ArrayList<Double> listOfMSE = new ArrayList<>();
 	private ActivationFncENUM activationFnc;
 	private ActivationFncENUM activationFncOutputLayer;
 	private TrainingTypesENUM trainType;
-	
 	
 	public NeuralNet initNet(int numberOfInputNeurons, 
 			int numberOfHiddenLayers,
@@ -97,14 +96,10 @@ public class NeuralNet {
 			Backpropagation b = new Backpropagation();
 			trainedNet = b.train(n);
 			return trainedNet;
-                case  KOHONEN:
-                    Kohonen k = new Kohonen();
-                    trainedNet = k.train(n);
-                    return trainedNet;
-                case LEVENBERG_MARQUARDT:
-                        LevenbergMarquardt mq = new LevenbergMarquardt();
-                        trainedNet = mq.train(n);
-                        return trainedNet;
+		case KOHONEN:
+			Kohonen k = new Kohonen();
+			trainedNet = k.train(n);
+			return trainedNet;
 		default:
 			throw new IllegalArgumentException(n.trainType+" does not exist in TrainingTypesENUM");
 		}
@@ -129,46 +124,49 @@ public class NeuralNet {
 			throw new IllegalArgumentException(n.trainType+" does not exist in TrainingTypesENUM");
 		}
 	}
-        
-        public double[][] getNetOutputValues(NeuralNet trainedNet){
-            
-            int rows = trainedNet.getTrainSet().length;
-            int cols = trainedNet.getOutputLayer().getNumberOfNeuronsInLayer();
-         double[][] matrixOutputValues = new double[rows][cols];
-         
-         switch(trainedNet.trainType){
-             case BACKPROPAGATION:
-                 Backpropagation b = new Backpropagation();
-                 
-                 for(int rows_i = 0 ; rows_i < rows ; rows_i++){
-                     for (int cols_i = 0 ; cols_i < cols; cols_i++){
-                         
-                         matrixOutputValues[rows_i][cols_i] = b.forward(trainedNet, rows_i).getOutputLayer().getListOfNeurons().get(cols_i).getOutputValue();
-                     }
-                 }
-                 
-                 break;
-             default:
-                 throw new IllegalArgumentException(trainedNet.trainType + " does not exist in TrainingTypsENUM");
-         }
-         
-         return matrixOutputValues;
-            
-        }
 	
-        public void netValidation(NeuralNet n){
-            
-            switch (n.trainType){
-            case KOHONEN:
-                Kohonen k = new Kohonen();
-                k.netValidation(n);
-                break;
-                        default:
-                            throw new IllegalArgumentException(n.trainType+" does not exist in TrainingTypesENUM");
-        }
-            
-      }
-        
+	public double[][] getNetOutputValues(NeuralNet trainedNet){
+		
+		int rows = trainedNet.getTrainSet().length;
+		
+		int cols = trainedNet.getOutputLayer().getNumberOfNeuronsInLayer();
+		
+		double[][] matrixOutputValues = new double[rows][cols];
+		
+		switch (trainedNet.trainType) {
+			case BACKPROPAGATION:
+				Backpropagation b = new Backpropagation();
+				
+				for (int rows_i = 0; rows_i < rows; rows_i++) {
+					for (int cols_i = 0; cols_i < cols; cols_i++) {
+						
+						matrixOutputValues[rows_i][cols_i] = b.forward(trainedNet, rows_i).getOutputLayer().getListOfNeurons().get(cols_i).getOutputValue();
+						
+					}
+				}
+				
+				break;
+			default:
+				throw new IllegalArgumentException(trainedNet.trainType+" does not exist in TrainingTypesENUM");
+		}
+		
+		return matrixOutputValues;
+				
+	}
+	
+	public void netValidation(NeuralNet n) {
+		
+		switch (n.trainType) {
+		case KOHONEN:
+			Kohonen k = new Kohonen();
+			k.netValidation( n );
+			break;
+		default:
+			throw new IllegalArgumentException(n.trainType+" does not exist in TrainingTypesENUM");
+		}
+		
+	}
+	
 	public InputLayer getInputLayer() {
 		return inputLayer;
 	}
@@ -305,13 +303,15 @@ public class NeuralNet {
 			ActivationFncENUM activationFncOutputLayer) {
 		this.activationFncOutputLayer = activationFncOutputLayer;
 	}
-        
-        public double[][] getValidationSet(){
-            return validationSet;
-        }
-        
-        public void setValidationSet(double[][] validationSet){
-            this.validationSet = validationSet;
-        }
+
+	public double[][] getValidationSet() {
+		return validationSet;
+	}
+
+	public void setValidationSet(double[][] validationSet) {
+		this.validationSet = validationSet;
+	}
+
+	
 	
 }
