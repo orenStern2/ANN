@@ -33,7 +33,7 @@ public class Backpropagation extends Training {
 			
 			setMse( sumErrors / rows );
 			
-			System.out.println( getMse() );
+			//System.out.println( getMse() );
 			
 			epoch++;
 			

@@ -84,7 +84,7 @@ public abstract class Training {
 			Neuron neuron = new Neuron();
 			neuron.setListOfWeightIn(inputWeightsInNew);
 			listOfNeurons.add(neuron);
-			inputWeightsInNew = new ArrayList<>();
+			inputWeightsInNew = new ArrayList<Double>();
 		}
 
 		return listOfNeurons;

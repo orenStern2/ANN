@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Weather {
 
-public static void main(String args[]){
+	public static void main(String args[]){
 		
 		Data weatherDataInput  = new Data("data", "inmet_13_14_input.csv");
 		Data weatherDataOutput = new Data("data", "inmet_13_14_output.csv");
@@ -56,7 +56,7 @@ public static void main(String args[]){
 			//ERROR:
 			Chart c1 = new Chart();
 			c1.plotXYData(n1.getListOfMSE().toArray(), "MSE Error", "Epochs", "MSE Value");
-			
+			                 System.out.println(n1.getListOfMSE().toArray());
 			//TRAINING:
 			double[][] matrixOutputRNA  	  = n1Trained.getNetOutputValues(n1Trained);
 			double[][] matrixOutputRNADenorm  = new Data().denormalize(matrixOutput, matrixOutputRNA, NORMALIZATION_TYPE);
@@ -72,7 +72,7 @@ public static void main(String args[]){
 			
 			//TEST:
 			n1Trained.setTrainSet( matrixInputTestRNANorm );
-			n1Trained.setRealMatrixOutputSet( matrixOutputTestRNANorm );
+			n1Trained.setRealMatrixOutputSet( matrixOutputTestRNANorm );;
 			
 			double[][] matrixOutputRNATest  	  = n1Trained.getNetOutputValues(n1Trained);
 			double[][] matrixOutputRNADenormTest  = new Data().denormalize(matrixOutputTestRNA, matrixOutputRNATest, NORMALIZATION_TYPE);

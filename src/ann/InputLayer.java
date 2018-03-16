@@ -14,6 +14,7 @@ public class InputLayer extends Layer {
 			Neuron neuron = new Neuron();
 			
 			listOfWeightInTemp.add( neuron.initNeuron() );
+			//listOfWeightInTemp.add( neuron.initNeuron( i ) );
 
 			neuron.setListOfWeightIn( listOfWeightInTemp );
 			listOfNeurons.add( neuron );
@@ -35,10 +36,12 @@ public class InputLayer extends Layer {
 			System.out.println(Arrays.deepToString( neuron.getListOfWeightIn().toArray() ));
 			n++;
 		}
-
-        }
-        
-          public void setNumberOfNeuronsInLayer(int numberOfNeuronsInLayer){
-                    this.numberOfNeuronsInLayer = numberOfNeuronsInLayer + 1; //BIAS
 	}
+	
+	
+	public void setNumberOfNeuronsInLayer(int numberOfNeuronsInLayer) {
+		this.numberOfNeuronsInLayer = numberOfNeuronsInLayer + 1; //BIAS
+	}
+	
+	
 }

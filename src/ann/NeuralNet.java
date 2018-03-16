@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import ann.learn.Adaline;
 import ann.learn.Backpropagation;
-import ann.learn.LevenbergMarquardt;
 import ann.learn.Perceptron;
 import ann.learn.Training.ActivationFncENUM;
 import ann.learn.Training.TrainingTypesENUM;
@@ -29,7 +28,7 @@ public class NeuralNet {
 	private double trainingError;
 	private double errorMean;
 	
-	private ArrayList<Double> listOfMSE = new ArrayList<>();
+	private ArrayList<Double> listOfMSE = new ArrayList<Double>();
 	private ActivationFncENUM activationFnc;
 	private ActivationFncENUM activationFncOutputLayer;
 	private TrainingTypesENUM trainType;
