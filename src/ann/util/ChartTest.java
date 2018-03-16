@@ -18,7 +18,7 @@ public class ChartTest {
 		
 		Data d = new Data();
 		d.setPath("data");
-		d.setFileName("01_12_2014_Belem_v1_output.csv");
+		d.setFileName("01_12_2014_Belem_v1_input_test.csv");
 		
 		try {
 			

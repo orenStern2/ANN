@@ -12,9 +12,10 @@ import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+
 public class Chart {
-	
-	public enum ChartPlotTypeENUM {
+    
+    public enum ChartPlotTypeENUM {
 		FULL_DATA, COMPARISON;
 	}
 
