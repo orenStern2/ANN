@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import ann.learn.Adaline;
 import ann.learn.Backpropagation;
+import ann.learn.LevenbergMarquardt;
 import ann.learn.Perceptron;
 import ann.learn.Training.ActivationFncENUM;
 import ann.learn.Training.TrainingTypesENUM;

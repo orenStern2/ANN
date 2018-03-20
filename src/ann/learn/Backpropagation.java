@@ -7,10 +7,10 @@ import ann.NeuralNet;
 import ann.Neuron;
 
 public class Backpropagation extends Training {
+
+	int epoch = 0;
 	
 	public NeuralNet train(NeuralNet n) {
-		
-		int epoch = 0;
 		
 		setMse(1.0);
 		
@@ -33,12 +33,15 @@ public class Backpropagation extends Training {
 			
 			setMse( sumErrors / rows );
 			
+			n.getListOfMSE().add( getMse() );
+			
 			//System.out.println( getMse() );
 			
 			epoch++;
 			
 		}
 		
+		System.out.println( getMse() );
 		System.out.println("Number of epochs: "+epoch);
 		
 		return n;
@@ -86,9 +89,9 @@ public class Backpropagation extends Training {
 				
 				
 				//output hidden layer (2)
+				double netValue = 0.0;
+				double netValueOut = 0.0;
 				for (int outLayer_i = 0; outLayer_i < n.getOutputLayer().getNumberOfNeuronsInLayer(); outLayer_i++){
-					double netValue = 0.0;
-					double netValueOut = 0.0;
 					
 					for (Neuron neuron : hiddenLayer.getListOfNeurons()) {
 						double hiddenWeightOut = neuron.getListOfWeightOut().get(outLayer_i);
@@ -106,7 +109,15 @@ public class Backpropagation extends Training {
 					n.getOutputLayer().getListOfNeurons().get(outLayer_i).setError(error);
 					sumError = sumError + Math.pow(error, 2.0);
 					
+					/*
+					if ( epoch == n.getMaxEpochs()-1 ) {
+						System.out.println("netValueOut: " + netValueOut);
+					}
+					*/
+					
 				}
+				
+				
 				
 				//error mean
 				double errorMean = sumError / n.getOutputLayer().getNumberOfNeuronsInLayer();
@@ -124,7 +135,7 @@ public class Backpropagation extends Training {
 		
 	}
 
-	protected NeuralNet backpropagation(NeuralNet n, int row) {
+	private NeuralNet backpropagation(NeuralNet n, int row) {
 
 		ArrayList<Neuron> outputLayer = new ArrayList<Neuron>();
 		outputLayer = n.getOutputLayer().getListOfNeurons();
@@ -220,5 +231,7 @@ public class Backpropagation extends Training {
 		return n;
 		
 	}
+
+	
 
 }
