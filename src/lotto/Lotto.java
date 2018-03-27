@@ -1,4 +1,12 @@
-package weather;
+package lotto;
+
+import ann.NeuralNet;
+import ann.learn.Training;
+import ann.util.Chart;
+import ann.util.Data;
+import java.io.IOException;
+import java.util.ArrayList;
+
 
 import ann.NeuralNet;
 import ann.learn.Training.ActivationFncENUM;
@@ -9,7 +17,16 @@ import ann.util.Data.NormalizationTypesENUM;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Weather {
+/**
+ *
+ * @author orenst
+ */
+public class Lotto {
+   
+
+
+
+
 
 	public static void main(String args[]){
 		
@@ -19,7 +36,7 @@ public class Weather {
 		Data weatherDataInputTestRNA  = new Data("data", "inmet_13_14_input_test.csv");
 		Data weatherDataOutputTestRNA = new Data("data", "inmet_13_14_output_test.csv");
 		
-		NormalizationTypesENUM NORMALIZATION_TYPE = Data.NormalizationTypesENUM.MAX_MIN_EQUALIZED;
+		Data.NormalizationTypesENUM NORMALIZATION_TYPE = Data.NormalizationTypesENUM.MAX_MIN_EQUALIZED;
 		
 		try {
 			double[][] matrixInput   = weatherDataInput.rawData2Matrix( weatherDataInput );
@@ -43,9 +60,9 @@ public class Weather {
 			n1.setMaxEpochs(1000);
 			n1.setTargetError(0.00001);
 			n1.setLearningRate(0.1);
-			n1.setTrainType(TrainingTypesENUM.BACKPROPAGATION);
-			n1.setActivationFnc(ActivationFncENUM.SIGLOG);
-			n1.setActivationFncOutputLayer(ActivationFncENUM.LINEAR);
+			n1.setTrainType(Training.TrainingTypesENUM.BACKPROPAGATION);
+			n1.setActivationFnc(Training.ActivationFncENUM.SIGLOG);
+			n1.setActivationFncOutputLayer(Training.ActivationFncENUM.LINEAR);
 			
 			NeuralNet n1Trained = new NeuralNet();
 			

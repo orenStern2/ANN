@@ -5,9 +5,13 @@ import ann.NeuralNet;
 import ann.Neuron;
 import ann.util.Matrix;
 import ann.util.IdentityMatrix;
-
+import ann.learn.Backpropagation;
 import java.util.ArrayList;
         
+/**
+ *
+ * @author Administrador
+ */
 public class LevenbergMarquardt extends Backpropagation {
 
     private Matrix jacobian = null;
