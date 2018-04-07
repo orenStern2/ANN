@@ -13,11 +13,11 @@ public class Weather {
 
 	public static void main(String args[]){
 		
-		Data weatherDataInput  = new Data("data", "runmeasures.csv");
-		Data weatherDataOutput = new Data("data", "runresults.csv");
-		
-		Data weatherDataInputTestRNA  = new Data("data", "testmeasures.csv");
-		Data weatherDataOutputTestRNA = new Data("data", "testresult.csv");
+		Data weatherDataInput  = new Data("data", "testmeasures.csv");
+		Data weatherDataOutput = new Data("data", "testresult.csv");
+                
+		Data weatherDataInputTestRNA  = new Data("data", "runmeasures.csv");
+		Data weatherDataOutputTestRNA = new Data("data", "runresults.csv");
 		
 		NormalizationTypesENUM NORMALIZATION_TYPE = Data.NormalizationTypesENUM.MAX_MIN_EQUALIZED;
 		
@@ -35,12 +35,12 @@ public class Weather {
 			double[][] matrixOutputTestRNANorm = weatherDataOutput.normalize(matrixOutputTestRNA, NORMALIZATION_TYPE);
 			
 			NeuralNet n1 = new NeuralNet();
-			n1 = n1.initNet(4, 1,4, 1);
+			n1 = n1.initNet(3, 1,4, 1);
 			
 			n1.setTrainSet( matrixInputNorm );
 			n1.setRealMatrixOutputSet( matrixOutputNorm );
 			
-			n1.setMaxEpochs(1000);
+			n1.setMaxEpochs(5000);
 			n1.setTargetError(0.00001);
 			n1.setLearningRate(0.1);
 			n1.setTrainType(TrainingTypesENUM.BACKPROPAGATION);
