@@ -35,12 +35,12 @@ public class Weather {
 			double[][] matrixOutputTestRNANorm = weatherDataOutput.normalize(matrixOutputTestRNA, NORMALIZATION_TYPE);
 			
 			NeuralNet n1 = new NeuralNet();
-			n1 = n1.initNet(3, 1,4, 1);
+			n1 = n1.initNet(3, 1,2, 1);
 			
 			n1.setTrainSet( matrixInputNorm );
 			n1.setRealMatrixOutputSet( matrixOutputNorm );
 			
-			n1.setMaxEpochs(5000);
+			n1.setMaxEpochs(100);
 			n1.setTargetError(0.00001);
 			n1.setLearningRate(0.1);
 			n1.setTrainType(TrainingTypesENUM.BACKPROPAGATION);
