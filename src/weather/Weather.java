@@ -13,11 +13,11 @@ public class Weather {
 
 	public static void main(String args[]){
 		
-		Data weatherDataInput  = new Data("data", "inmet_13_14_input.csv");
-		Data weatherDataOutput = new Data("data", "inmet_13_14_output.csv");
+		Data weatherDataInput  = new Data("data", "runmeasures.csv");
+		Data weatherDataOutput = new Data("data", "runresults.csv");
 		
-		Data weatherDataInputTestRNA  = new Data("data", "inmet_13_14_input_test.csv");
-		Data weatherDataOutputTestRNA = new Data("data", "inmet_13_14_output_test.csv");
+		Data weatherDataInputTestRNA  = new Data("data", "testmeasures.csv");
+		Data weatherDataOutputTestRNA = new Data("data", "testresult.csv");
 		
 		NormalizationTypesENUM NORMALIZATION_TYPE = Data.NormalizationTypesENUM.MAX_MIN_EQUALIZED;
 		
