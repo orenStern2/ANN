@@ -42,7 +42,7 @@ public class Weather {
 			
 			n1.setMaxEpochs(1000);
 			n1.setTargetError(0.00001);
-			n1.setLearningRate(0.5);
+			n1.setLearningRate(0.1);
 			n1.setTrainType(TrainingTypesENUM.BACKPROPAGATION);
 			n1.setActivationFnc(ActivationFncENUM.SIGLOG);
 			n1.setActivationFncOutputLayer(ActivationFncENUM.LINEAR);
