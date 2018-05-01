@@ -17,7 +17,7 @@ public class ChartTest {
 		//new ChartTest().libTest();
 		
 		Data d = new Data();
-		d.setPath("data");
+		d.setPath("Data");
 		d.setFileName("01_12_2014_Belem_v1_input_test.csv");
 		
 		try {
