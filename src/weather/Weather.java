@@ -35,7 +35,7 @@ public class Weather {
 			double[][] matrixOutputTestRNANorm = weatherDataOutput.normalize(matrixOutputTestRNA, NORMALIZATION_TYPE);
 			
 			NeuralNet n1 = new NeuralNet();
-			n1 = n1.initNet(2, 1, 3, 1);
+			n1 = n1.initNet(2, 2, 3, 1);
 			
 			n1.setTrainSet( matrixInputNorm );
 			n1.setRealMatrixOutputSet( matrixOutputNorm );

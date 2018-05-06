@@ -18,7 +18,7 @@ public class NeuralNetTest {
 		NeuralNet testNet = new NeuralNet();
 		
 		//2 inputs because "bias"
-		testNet = testNet.initNet(2, 0, 0, 2);
+		testNet = testNet.initNet(2, 100, 100, 2);
 		
 		NeuralNet trainedNet = new NeuralNet();
 		
@@ -29,7 +29,7 @@ public class NeuralNetTest {
 		//viper and monkey, respectively:
 		testNet.setValidationSet(new double[][] { {-1.0, 1.0, -1.0}, {1.0, 1.0, 1.0},{-1.0,1.0,-1.0} } );
 		
-		testNet.setMaxEpochs(10);
+		testNet.setMaxEpochs(1000);
 		testNet.setLearningRate(0.1);
 		testNet.setTrainType(TrainingTypesENUM.KOHONEN);
 		

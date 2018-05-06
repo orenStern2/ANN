@@ -11,7 +11,7 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
-
+import org.jfree.data.category.DefaultCategoryDataset;
 
 public class Chart {
     
@@ -170,6 +170,47 @@ public class Chart {
 		}
 	}
 	
-	
+	public void plotBarChart(double[][] matrix, String chartTitle, String xAxisLabel, String yAxisLabel){
+            
+            int rows = matrix.length;
+            int cols = matrix[0].length;
+            
+            DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+            
+            for (int rows_i = 0; rows_i < rows; rows_i++){
+                
+                for (int cols_i = 0; cols_i < cols; cols_i++){
+                    
+                    double realValue = matrix[rows_i][cols_i];
+                    
+                    if (cols_i == 0){
+                        
+                        dataset.addValue (realValue, "Real", rows_i+"");
+                        
+                    }else {
+                        
+                        dataset.addValue(realValue, "Estamates", rows_i+"");
+                        
+                    }
+                } 
+                
+            }
+            
+           JFreeChart chart = ChartFactory.createBarChart(
+           chartTitle, 
+           xAxisLabel,
+           yAxisLabel,
+           dataset,
+           PlotOrientation.VERTICAL,
+           true,
+           true,
+           false
+           );
+           
+           ChartFrame frame = new ChartFrame("Neurak Net Chart", chart);
+           frame.pack();
+           frame.setVisible(true);
+      
+    }
 	
 }
